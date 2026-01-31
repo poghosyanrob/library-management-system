@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<a href="/">Back</a> <br>
+
+<a href="/book/add">Add Book</a> <br>
+<h1>Books List</h1>
+
+Category:
+<select onchange="
+    if (this.value == '') {
+        window.location.href = '/book';
+    } else {
+        window.location.href = '/book?categoryId=' + this.value;
+    }">
+    <option value=""
+            th:selected="${selectedCategoryId == null }">
+        All
+    </option>
+    <option th:each="category : ${categories}"
+            th:value="${category.id}"
+            th:text="${category.name}"
+            th:selected="${category.id == selectedCategoryId}"></option>
+</select><br>
+
+
+<form action="/book" method="post">
+    Search: <input type="search" name="value" placeholder="Do search by Author or by Title"><br>
+    <input type="submit" value="Search">
+</form>
+
+
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Category Name</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.year}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.category.name}"></td>
+        <td><a th:href="@{/book/delete(id=${book.id})}">Delete</a> </td>
+    </tr>
+</table>
+
+</body>
+</html>

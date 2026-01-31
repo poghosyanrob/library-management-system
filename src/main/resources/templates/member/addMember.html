@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Member</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<a href="/">Back</a> <br>
+<a href="/member">Back to Member page</a> <br>
+
+<h1>Add Member</h1>
+<form action="/member/add" method="post">
+    <input type="text" name="fullName" placeholder="Full Name"><br>
+    <input type="email" name="email" placeholder="E-mail"><br>
+    <input type="tel" name="phone" placeholder="Phone"><br>
+    <div th:each="book : ${books}">
+        <span th:text="${book.title}"></span> <input type="checkbox" name="books" th:value="${book.id}">
+    </div>
+
+    <br>
+    <input type="submit" value="Add Book">
+</form>
+</body>
+</html>

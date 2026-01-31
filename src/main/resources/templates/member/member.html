@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<a href="/">Back</a> <br>
+
+<a href="/member/add">Add Member</a> <br>
+<h1>Member List</h1>
+
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Registration Date</th>
+        <th>Borrowed Books</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td>
+            <a th:href="@{/member/details(categoryId=${member.id})}" th:text="${member.fullName}"></a>
+        </td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.phone}"></td>
+        <td th:text="${member.registrationDate}"></td>
+        <td th:text="${member.getBooks().size()}"></td>
+        <td><a th:href="@{/member/delete(id=${member.id})}">Delete</a> </td>
+    </tr>
+</table>
+
+
+
+</body>
+</html>

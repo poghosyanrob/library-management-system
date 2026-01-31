@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<a href="/">Back</a> <br>
+<a href="/book">Back to Book page</a> <br>
+<h1>Add Book</h1>
+<form action="/book/add" method="post">
+    <input type="text" name="title" placeholder="Title"><br>
+    <input type="text" name="author" placeholder="Author"><br>
+    <input type="number" name="year" placeholder="Year"><br>
+    <input type="text" name="genre" placeholder="Genre"><br>
+    <select name="category.id">
+        <option th:each="category : ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}"></option>
+    </select><br>
+    <input type="submit" value="Add Book">
+</form>
+
+</body>
+</html>

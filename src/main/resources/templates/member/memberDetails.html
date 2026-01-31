@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+<a href="/">Back</a> <br>
+<a href="/member">Back to Member page</a> <br>
+
+<p th:text="${member.fullName}"></p>
+<p th:text="${member.email}"></p>
+<p th:text="${member.phone}"></p>
+<p th:text="${member.registrationDate}"></p>
+
+<h1>Borrowed Books</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Category Name</th>
+    </tr>
+    <tr th:each="book : ${member.getBooks()}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.year}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.category.name}"></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

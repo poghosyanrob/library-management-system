@@ -1,0 +1,237 @@
+/* =====================
+   RESET & BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: #ffffff;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease;
+}
+
+/* =====================
+   LINKS & BUTTONS
+===================== */
+a {
+    display: inline-block;
+    margin: 10px 10px 20px 0;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+a::before {
+    content: "⬅ ";
+}
+
+a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ADD BUTTONS */
+a[href*="/add"] {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+}
+
+a[href*="/add"]::before {
+    content: "➕ ";
+}
+
+a[href*="/add"]:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* DELETE BUTTONS */
+a[href*="/delete"] {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+a[href*="/delete"]::before {
+    content: "🗑 ";
+}
+
+a[href*="/delete"]:hover {
+    box-shadow: 0 6px 18px rgba(255, 75, 43, 0.6);
+    transform: scale(1.05);
+}
+
+/* =====================
+   HEADINGS
+===================== */
+h1 {
+    margin: 30px 0 20px;
+    font-size: 2.4rem;
+    animation: slideDown 0.6s ease;
+}
+
+h1::before {
+    content: "📌 ";
+}
+
+/* =====================
+   TABLES
+===================== */
+table {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+th {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 14px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+tr {
+    animation: slideUp 0.5s ease;
+}
+
+/* =====================
+   FORMS
+===================== */
+form {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 30px 25px;
+    border-radius: 18px;
+    margin-top: 20px;
+    animation: slideUp 0.6s ease;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 1rem;
+}
+
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+form input:focus,
+form select:focus {
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 0 2px rgba(0, 198, 255, 0.6);
+}
+
+/* SUBMIT */
+form input[type="submit"] {
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(91, 134, 229, 0.45);
+}
+
+form input[type="submit"]::before {
+    content: "✔ ";
+}
+
+form input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(91, 134, 229, 0.7);
+}
+
+/* =====================
+   FILTER & SEARCH
+===================== */
+select {
+    margin: 15px 0 25px;
+    cursor: pointer;
+}
+
+/* =====================
+   MEMBER DETAILS
+===================== */
+p {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin: 12px 0;
+    max-width: 500px;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-25px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    form {
+        width: 100%;
+    }
+}
