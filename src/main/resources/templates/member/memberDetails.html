@@ -11,6 +11,8 @@
 <a href="/">Back</a> <br>
 <a href="/member">Back to Member page</a> <br>
 
+<img th:if="${member.getPictureName() != null && !member.getPictureName().equals('')}" th:src="@{/image/get(pic=${member.pictureName})}" width="500">
+<img th:if="${member.getPictureName() == null || member.getPictureName().equals('')}" th:src="@{/image/img.png}" width="200">
 <p th:text="${member.fullName}"></p>
 <p th:text="${member.email}"></p>
 <p th:text="${member.phone}"></p>
@@ -26,6 +28,7 @@
         <th>Year</th>
         <th>Genre</th>
         <th>Category Name</th>
+        <th>Action</th>
     </tr>
     <tr th:each="book : ${member.getBooks()}">
         <td th:text="${book.id}"></td>
@@ -34,6 +37,7 @@
         <td th:text="${book.year}"></td>
         <td th:text="${book.genre}"></td>
         <td th:text="${book.category.name}"></td>
+        <td><a th:href="@{/member/details/book/delete(memberId=${member.id}, bookId=${book.id})}">Remove</a> </td>
     </tr>
 </table>
 

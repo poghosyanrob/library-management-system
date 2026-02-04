@@ -1,7 +1,7 @@
 package am.example.librarymanagementsystem.controller;
 
 import am.example.librarymanagementsystem.model.Category;
-import am.example.librarymanagementsystem.repository.CategoryRepository;
+import am.example.librarymanagementsystem.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +16,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
     @GetMapping("/category")
     public String categories(ModelMap modelMap) {
-        List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = categoryService.findAll();
         modelMap.addAttribute("categories", categories);
         return "category/category";
     }
@@ -32,14 +32,14 @@ public class CategoryController {
 
     @PostMapping("/category/add")
     public String addCategory(@ModelAttribute Category category) {
-        categoryRepository.save(category);
+        categoryService.save(category);
         return "redirect:/category";
 
     }
 
     @GetMapping("/category/delete")
     public String deleteCategory(@RequestParam("id") int id) {
-        categoryRepository.deleteById(id);
+        categoryService.deleteById(id);
         return "redirect:/category";
     }
 }

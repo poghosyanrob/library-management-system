@@ -35,10 +35,13 @@ public class Member {
     @Column(name = "registration_date")
     private String registrationDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
+    private String pictureName;
+
     @ManyToMany
     @JoinTable(name = "member_book",
             joinColumns = @JoinColumn(name = "member_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private List<Book> books;
 
 }

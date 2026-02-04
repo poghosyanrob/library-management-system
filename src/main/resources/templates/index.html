@@ -11,5 +11,9 @@
 <a href="/book">Book page</a> <br>
 <a href="/member">Member page</a> <br>
 
+<span th:if="${userName} != null"> Welcome <span th:text="${userName}"></span></span><br>
+<a th:if="${userName}  != null" href="/logout">Logout</a> <br><br>
+<a th:if="${userName}  == null" href="/login">Login</a> <br><br>
+
 </body>
 </html>

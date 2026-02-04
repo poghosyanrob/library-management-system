@@ -15,6 +15,7 @@
 
 <table>
     <tr>
+        <th>Picture</th>
         <th>Id</th>
         <th>Full Name</th>
         <th>Email</th>
@@ -24,9 +25,13 @@
         <th>Action</th>
     </tr>
     <tr th:each="member : ${members}">
+        <td>
+            <img th:if="${member.getPictureName() != null && !member.getPictureName().equals('')}" th:src="@{/image/get(pic=${member.pictureName})}" width="50">
+            <img th:if="${member.getPictureName() == null || member.getPictureName().equals('')}" th:src="@{/image/img.png}" width="50">
+        </td>
         <td th:text="${member.id}"></td>
         <td>
-            <a th:href="@{/member/details(categoryId=${member.id})}" th:text="${member.fullName}"></a>
+            <a th:href="@{/member/details(memberId=${member.id})}" th:text="${member.fullName}"></a>
         </td>
         <td th:text="${member.email}"></td>
         <td th:text="${member.phone}"></td>
