@@ -46,6 +46,7 @@ public class BookController {
         } else {
             result = bookService.searchBooks(value);
         }
+        modelMap.addAttribute("categories", categoryService.findAll());
         modelMap.addAttribute("books", result);
         return "book/book";
     }
